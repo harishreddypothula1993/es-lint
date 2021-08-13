@@ -1,0 +1,86 @@
+// https://eslint.org/docs/rules/
+// https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin
+{
+  "root": true,
+  "plugins": [
+    "eslint-plugin",
+    "@typescript-eslint",
+    "import",
+    "cypress"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:cypress/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": [
+      "./tsconfig.json"
+    ]
+  },
+  "rules": {
+    // from tslint
+    "curly": ["error", "all"],
+    "no-console": "error",
+    "arrow-body-style": ["error", "always"],
+    "eol-last": ["error", "always"],
+    "object-curly-spacing": ["error", "always"],
+    "@typescript-eslint/no-non-null-assertion": "error",
+    "default-case": "error",
+    "default-case-last": "error",
+    "no-var": "error",
+    "jsx-quotes": ["error", "prefer-single"],
+    "semi": "error",
+    "space-before-function-paren": "error",
+    "@typescript-eslint/typedef": [
+      "error",
+      {
+        "arrowParameter": true,
+        "variableDeclaration": true,
+        "arrayDestructuring": true,
+        "memberVariableDeclaration": true,
+        "objectDestructuring": true,
+        "parameter": true,
+        "propertyDeclaration": true,
+        "variableDeclarationIgnoreFunction": true
+      }
+    ],
+    // new rules
+    "array-bracket-spacing": ["error", "always"], // Disallow or enforce spaces inside of brackets
+    "no-mixed-operators": "error", // disallow mixed binary operators,
+    "no-duplicate-imports": "error", // disallow duplicate imports
+    "lines-between-class-members": ["error", "always"], // require or disallow an empty line between class members
+    "@typescript-eslint/type-annotation-spacing": ["error", { "before": true, "after": true }], // Require consistent spacing around type annotations
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"], // Consistent with type definition either interface or type
+    "@typescript-eslint/consistent-type-imports": ["error", {
+      "prefer": "type-imports",
+      "disallowTypeAnnotations": true
+    }], // Enforces consistent usage of type imports
+    "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }], // Disallow usage of the any type
+    "@typescript-eslint/no-type-alias": "error", //Disallow the use of type aliases
+     // eslint-plugin-import
+    "import/first": "error", // disallow non-import statements appearing before import statements
+    "import/newline-after-import": "error", // Require a newline after the last import/require in a group
+    "import/no-absolute-path": "error", // Forbid import of modules using absolute paths
+    "import/no-default-export": "error",  // forbid default exports
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "peerDependencies": true,
+        "optionalDependencies": false
+      }
+    ],  // Forbid the use of extraneous packages
+    "import/no-mutable-exports": "error", // Forbid mutable exports
+    "import/no-named-default": "error", // Prevent importing the default as if it were named
+    "import/no-self-import": "error", // Forbid a module from importing itself
+
+
+    // specific to cypress
+    "cypress/no-unnecessary-waiting": "error",
+    "cypress/assertion-before-screenshot": "warn",
+    "cypress/no-async-tests": "error"
+  }
+}
